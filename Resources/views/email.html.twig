@@ -1,0 +1,24 @@
+{% if error.user %}
+    <b>User</b>: {{ error.user.nickname }} ({{ error.user.email }})<br>
+{% endif %}
+{% if error.url %}
+    <b>Url</b>: {{ error.url }}<br>
+{% endif %}
+{% if error.ip %}
+    <b>IP</b>: {{ error.ip }}<br>
+{% endif %}
+{% if error.referer %}
+    <b>Referer</b>: {{ error.referer }}<br>
+{% endif %}
+{% if error.agent %}
+    <b>Agent</b>: {{ error.agent }}<br>
+{% endif %}
+{% if error.message %}
+    <br>
+    <b>{{ error.message }}</b><br>
+{% endif %}
+{% if error.trace %}
+    <br>
+    <hr>
+    {{ error.trace|nl2br }}
+{% endif %}

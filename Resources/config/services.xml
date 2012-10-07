@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+    	<service id="short.error_subscriber" class="Short\ErrorBundle\ErrorSubscriber">
+    	    <argument type="service" id="service_container"></argument>
+    	    <tag name="kernel.event_listener" event="kernel.exception" method="onKernelException" />
+    	</service>
+
+    	<service id="short.error_manager" class="Short\ErrorBundle\ErrorManager">
+    	    <argument type="service" id="service_container"></argument>
+    	</service>
+
+        <service id="short.github" class="Short\ErrorBundle\Github">
+            <argument type="service" id="service_container"></argument>
+            <argument>%github_user%</argument>
+            <argument>%github_password%</argument>
+            <argument>%github_repo_owner%</argument>
+            <argument>%github_repo_name%</argument>
+        </service>
+    </services>
+</container>
